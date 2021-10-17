@@ -1,0 +1,56 @@
+<p class="say"><span class="val name">{{ name }}</span>야 어딨니? 이리 오렴. 맘마 먹자~</p>
+<p>어머니가 당신을 찾고있다. 그러나 당신과 어머니 사이에는 장애물이 있다.</p>
+<p>어떤 길로 지나갈까?</p>
+<p>
+  <button type="button" name="button" onclick="app.me.creative++;">레고(유아용)</button>
+  <button type="button" name="button" onclick="app.me.sufferance++;">모빌(어지럽다)</button>
+  <button type="button" name="button" onclick="app.me.charisma++;">정체불명의 무엇(입에 넣을 수 있을 것 같다)</button>
+  <button type="button" name="button" onclick="app.me.sloth++;" class="class_0">엄마가 올 때까지 기다린다</button>
+</p>
+
+<script type="text/javascript">
+  $('.name').text(app.me.name);
+
+  $('.c' + app.me.turn + " button").on('click', function() {
+    $('.c' + app.me.turn + " button").hide();
+    p2 = {
+      name: $(this).text(),
+      hp: 1,
+      str: 1,
+      def: 1,
+      dex: 1,
+      class: $(this).is('.class_0')
+    }
+    // console.log(p2.class);
+    $('.c' + app.me.turn).append('<p><span class="option">' + $(this).text() + '</span></p>');
+    battle();
+  });
+
+  function battle_after(is_win) {
+    if (p2.class) {
+      if (is_win == 0) {
+        msg = '어머니는 금방 당신을 찾았다. 당신은 제 때 맘마를 먹을 수 있었다. <span class="effect_good">최대체력 +1</span>';
+        app.me.hp_max++;
+        app.me.hp++;
+      } else if (is_win == 1) {
+        msg = '당신은 가만히 있는 것도 제대로 못 한다. 왜냐하면 아기니까. <span class="effect_bad">체력 -1</span>';
+        app.me.hp--;
+      } else {
+        msg = '당신은 어머니가 관찰하기 전까지 가만히있거나 혹은 가만히있지 않거나 동시적인 상태로 존재한다.';
+        app.me.hp--;
+      }
+    } else if (is_win == 0) {
+      msg = '<span class="val">' + p2.name + '</span>은(는) 당신을 막지 못 해! 당신은 제 때 맘마를 먹을 수 있었다. <span class="effect_good">최대체력 +1</span>';
+      app.me.hp_max++;
+      app.me.hp++;
+    } else if (is_win == 1) {
+      msg = '<span class="val">' + p2.name + '</span>은(는) 너무 강했다! 당신은 눈앞이 깜깜해졌다. <span class="effect_bad">체력 -1</span>';
+      app.me.hp--;
+    } else {
+      msg = '<span class="val">' + p2.name + '</span>은(는) 너무 강했다! 당신은 눈앞이 깜깜해졌다.';
+      app.me.hp--;
+    }
+    msg += '<p><button type="button" name="button" onclick="engine(); $(this).hide()">살아가기</button></p>'
+    $('.c' + app.me.turn).append('<p>' + msg + '</p>');
+  }
+</script>

@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+JP&family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('style__color.css');
+
+body {
+  font-family: 'Noto Sans', 'Noto Sans JP', 'Noto Sans KR', sans-serif;
+  text-align: center;
+}
+
+.output {
+  text-align: center;
+}
+
+#me {
+  line-height: 2;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+}
+
+#vars {
+  /* font-size: .75em; */
+  color: #666;
+}
+
+#vars .item {
+  /* margin: 0 .5em;
+  font-size: .7em;
+  background: #eee;
+  padding: 1ex; */
+  font-weight: bold;
+  color: #222;
+}
+
+#vars li {
+  display: inline-block;
+  /* border: 1px solid silver; */
+  border-radius: 2em;
+  background: #eee;
+  margin: .5em;
+  padding: .25em .5em;
+  font-family: monospace;
+}
+
+#log {
+  background: var(--material-color-blue-grey-50);
+  margin-top: 15em;
+}
+
+#log .c {
+  padding: 2em 0;
+  line-height: 2;
+}
+
+#log .c:not(:first-of-type) {
+  border-top: 1px dashed black;
+}
+
+#log .c .option {
+  color: gold;
+  background: #555;
+  padding: .5em 1em;
+  border-radius: 2em;
+}
+
+#log .val {
+  color: var(--material-color-amber);
+  background: var(--material-color-blue-grey-900);
+  padding: .1em .25em;
+  /* font-size: .9em; */
+}
+
+#log .say {
+  font-style: italic;
+  font-size: 1.2em;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: bold;
+  color: #666;
+  /* background: var(--material-color-grey-900); */
+  /* color: #fff; */
+  padding: .1em .25em;
+}
+
+#log .say::before {
+  content: '"';
+}
+
+#log .say::after {
+  content: '"';
+}
+
+#log .effect_good {
+  color: var(--material-color-green);
+}
+
+#log .effect_bad {
+  color: var(--material-color-red);
+}
+
+#battle {
+  position: fixed;
+  visibility: hidden;
+  background: #fff;
+  border: 1px solid silver;
+  white-space: pre-line;
+  top: calc(50% - 300px);
+  width: calc(600px - 2em);
+  height: calc(600px - 2em);
+  padding: 1em;
+  overflow-y: scroll;
+  font-size: .85em;
+  left: calc(50% - 300px);
+  text-align: left;
+}
+
+#battle.on {
+  visibility: visible;
+}
+
+/* sub */
+.shadow {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
+  border-radius: 3px
+}
+
+.shadow-right {
+  box-shadow: 2px 0 6px 0 rgba(60, 64, 67, .15);
+}
+
+.shadow-bottom {
+  box-shadow: 0 2px 6px 0 rgba(60, 64, 67, .15);
+}
+
+.shadow-top-inset {
+  box-shadow: inset 0 7px 6px -5px rgba(60, 64, 67, .15);
+}
+
+.shadow-bottom-inset {
+  box-shadow: inset 0 -7px 6px -5px rgba(60, 64, 67, .15);
+}
+
+.shadow-top-inset.shadow-bottom-inset {
+  box-shadow: inset 0 7px 6px -5px rgba(60, 64, 67, .15), inset 0 -7px 6px -5px rgba(60, 64, 67, .15);
+}

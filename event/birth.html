@@ -1,0 +1,58 @@
+<span class="say birth">응애.</span><br>
+<p>당신은 <span class="val spoon">{{ spoon }}</span> <span class="val family">{{ family }}</span> 가정에서 태어났다.</p>
+<p>부모님은 당신에게 <span class="val name">{{ name }}</span>(이)라는 이름을 지어주셨다.</p>
+
+<button type="button" name="button" onclick="app.me.age=-1;">아니 이건 꿈이야</button>
+<button type="button" name="button" onclick="">살아가기</button>
+
+<script type="text/javascript">
+  $('.c' + app.me.turn + " button").on('click', function() {
+    $('.c' + app.me.turn + " button").hide();
+    engine();
+  });
+
+  // delete app.me.local
+  if (dice(20, 1, 0) > 15) {
+    app.me.local = '서울';
+  }
+
+  // delete app.me.name
+  app.me.age = 0;
+  app.me.name = name[dice(1, name.length, -1)];
+  app.me.title = '신생아';
+
+  $('.c' + app.me.turn + ' .name').html(app.me.name);
+
+  // delete app.me.spoon
+  app.me.spoon = dice(1, 100, 0);
+  if (app.me.spoon > 90) {
+    $('.c' + app.me.turn + ' .spoon').html('부유하고');
+    $('.c' + app.me.turn + ' .birth').html('응애!!');
+  } else if (app.me.spoon > 75) {
+    $('.c' + app.me.turn + ' .spoon').html('중산층이고');
+    $('.c' + app.me.turn + ' .birth').html('응애!');
+  } else if (app.me.spoon > 5) {
+    $('.c' + app.me.turn + ' .spoon').html('가난하고');
+    $('.c' + app.me.turn + ' .birth').html('응애.');
+  } else {
+    $('.c' + app.me.turn + ' .spoon').html('찢어지게 가난하고');
+    $('.c' + app.me.turn + ' .birth').html('응애...');
+  }
+
+  // delete app.me.family
+  app.me.family = dice(1, 100, 0);
+  if (app.me.family > 50) {
+    $('.family').html('화목한');
+  } else if (app.me.family > 75) {
+    $('.family').html('평범한');
+  } else if (app.me.family > 5) {
+    $('.family').html('우울한');
+  } else {
+    $('.family').html('숨막히는');
+  }
+
+  app.me.hp = app.me.hp_max = dice(1, 3, 2);
+  app.me.mp = app.me.mp_max = dice(1, 3, 2);
+
+  app.me.money += Math.round(app.me.spoon / 10);
+</script>
