@@ -28,9 +28,9 @@ function load(id) {
     success: function(data) {
       // $("#log").html("");
       $('#log').append('<div class="c c' + app.me.turn + '">' + data + '</div>');
-      $('html').animate({
-        scrollTop: $('html').prop('scrollHeight')
-      }, 1500);
+      // $('html').animate({
+      //   scrollTop: $('html').prop('scrollHeight')
+      // }, 1500);
     }
   });
 }

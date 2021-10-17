@@ -30,7 +30,7 @@ function event(type) {
       } else if (app.me.age < 13) { // 02 - 8, 10, 12
         app.me.title = "어린이";
         app.me.age += 2;
-        load('c_00_01');
+        load('c_02_00');
       } else if (app.me.age < 17) { // 03 - 14, 15, 16
         app.me.title = "청소년";
         app.me.age += 1;

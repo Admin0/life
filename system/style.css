@@ -40,6 +40,7 @@ body {
 
 #vars li {
   display: inline-block;
+  display: none;
   /* border: 1px solid silver; */
   border-radius: 2em;
   background: #eee;
